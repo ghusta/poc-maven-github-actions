@@ -20,14 +20,14 @@ jobs:
           java-version: '11'
           cache: 'maven'
 
-      - name: Get project version with Maven
+      - name: Get project metadata with Maven
         run: |
           project_version=$(mvn help:evaluate -q -Dexpression=project.version -DforceStdout=true)
           echo "Project version fetched = $project_version"
           echo "project_version=$project_version" >> $GITHUB_ENV
           project_artifactid=$(mvn help:evaluate -q -Dexpression=project.artifactId -DforceStdout=true)
-          echo "Project artifactId fetched = project_artifactid"
-          echo "project_artifactid=project_artifactid" >> $GITHUB_ENV
+          echo "Project artifactId fetched = $project_artifactid"
+          echo "project_artifactid=$project_artifactid" >> $GITHUB_ENV
 
       - name: Test var accessible in next step
         run: |
