@@ -4,7 +4,7 @@
 
 	<groupId>fr.husta.poc-maven-github-actions</groupId>
 	<artifactId>poc-maven-github-actions</artifactId>
-	<version>1.2-SNAPSHOT</version>
+	<version>1.2</version>
 	<packaging>jar</packaging>
 
 	<properties>
