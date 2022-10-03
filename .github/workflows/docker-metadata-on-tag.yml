@@ -3,10 +3,11 @@ name: Docker Metadata on Tags
 
 # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
 on:
-  tags:
-    - '**'
-  branches-ignore:
-    - '**'
+  push:
+    tags:
+      - '**'
+    branches-ignore:
+      - '**'
 
 jobs:
   docker-metadata:
@@ -21,8 +22,8 @@ jobs:
         with:
           images: ghusta/myapp
           tags: |
-            'type=semver,pattern={{version}}'
-            'type=semver,pattern={{major}}.{{minor}}'
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Next
         run: |
