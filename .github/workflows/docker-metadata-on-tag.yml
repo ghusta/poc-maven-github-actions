@@ -22,9 +22,9 @@ jobs:
         with:
           images: ghusta/myapp
           tags: |
-            # like semver
+            # semver-compatible
             type=match,pattern=\d.\d.\d
-            # not like semver
+            # not semver-compatible
             type=match,pattern=\d.\d
 
       - name: Next
