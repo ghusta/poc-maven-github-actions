@@ -18,8 +18,6 @@ jobs:
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
-        env:
-          TAG_VALUE: v1.2
         with:
           images: ghusta/myapp
           tags: |
