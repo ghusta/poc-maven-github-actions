@@ -28,5 +28,5 @@ jobs:
       - name: Next
         run: |
           echo Git ref is ${{ github.ref }}
-          echo Metadata tags = ${{ steps.meta.outputs.tags }}
+          echo Metadata tags = ${{ join(steps.meta.outputs.tags, ', ') }}
           echo Metadata labels = ${{ steps.meta.outputs.labels }}
