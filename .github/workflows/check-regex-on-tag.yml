@@ -3,8 +3,7 @@ name: Check Tag name with Regex
 on:
   push:
     tags:
-      - '([1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)'
-      - '([1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-alpine)?'
+      - '[1-9][0-9]*.[0-9]*.[0-9]*'
 
 jobs:
   check-tag-name:
