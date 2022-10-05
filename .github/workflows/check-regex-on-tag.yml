@@ -1,0 +1,13 @@
+name: Check Tag name with Regex
+
+on:
+  push:
+    tags:
+      - ^([1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$
+      - ^([1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-alpine)?$
+
+jobs:
+  check-tag-name:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Tag name is OK"
