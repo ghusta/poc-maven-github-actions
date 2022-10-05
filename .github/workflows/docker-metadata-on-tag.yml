@@ -31,5 +31,5 @@ jobs:
         run: |
           echo Git ref is ${{ github.ref }}
           echo Git ref name is ${{ github.ref_name }}
-          echo Metadata tags = ${{ steps.meta.outputs.tags }}
+          echo Metadata tags = ${{ fromJSON(steps.meta.outputs.json).tags }}
           echo Metadata labels = ${{ steps.meta.outputs.labels }}
