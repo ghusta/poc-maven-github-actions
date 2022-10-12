@@ -1,0 +1,37 @@
+# See : https://github.com/marketplace/actions/docker-metadata-action
+name: Docker Metadata on Tags using Suffix
+
+# https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflow_dispatch
+on:
+  push:
+    tags:
+      - '**'
+    branches-ignore:
+      - '**'
+
+jobs:
+  docker-metadata:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: ghusta/myapp
+          sep-tags: ','
+          sep-labels: ', '
+          tags: |
+            # semver-only tags
+            type=semver,pattern={{version}}
+            type=semver,pattern={{version}},suffix=-test
+            type=semver,pattern={{major}}.{{minor}}
+
+      - name: Next
+        run: |
+          echo Git ref is ${{ github.ref }}
+          echo Git ref name is ${{ github.ref_name }}
+          echo Metadata tags = ${{ steps.meta.outputs.tags }}
+          echo Metadata labels = ${{ steps.meta.outputs.labels }}
