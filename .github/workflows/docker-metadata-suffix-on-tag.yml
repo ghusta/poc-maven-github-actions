@@ -41,10 +41,11 @@ jobs:
           sep-labels: ', '
           flavor: |
             latest=false
+            suffix=-fake
           tags: |
             # semver-only tags
-            type=semver,pattern={{version}},suffix=-fake
-            type=semver,pattern={{major}}.{{minor}},suffix=-fake
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
 
       - name: Next
         run: |
