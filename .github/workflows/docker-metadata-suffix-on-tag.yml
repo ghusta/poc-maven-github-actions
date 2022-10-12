@@ -19,6 +19,8 @@ jobs:
       - name: Docker meta
         id: meta
         uses: docker/metadata-action@v4
+        env: 
+          TAG_SUFFIX: '-test'
         with:
           images: ghusta/myapp
           sep-tags: ','
@@ -28,20 +30,22 @@ jobs:
           tags: |
             # semver-only tags
             type=semver,pattern={{version}}
-            type=semver,pattern={{version}},suffix=-test
+            type=semver,pattern={{version}},suffix=${{ env.TAG_SUFFIX }}
             type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}.{{minor}},suffix=-test
+            type=semver,pattern={{major}}.{{minor}},suffix=${{ env.TAG_SUFFIX }}
 
       - name: Docker meta no latest
         id: meta-no-latest
         uses: docker/metadata-action@v4
+        env: 
+          TAG_SUFFIX: '-fake'
         with:
           images: ghusta/myapp
           sep-tags: ','
           sep-labels: ', '
           flavor: |
             latest=false
-            suffix=-fake
+            suffix={{ env.TAG_SUFFIX }}
           tags: |
             # semver-only tags
             type=semver,pattern={{version}}
